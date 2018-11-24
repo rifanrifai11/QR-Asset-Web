@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMerekRequest;
 use App\Http\Requests\UpdateMerekRequest;
-use App\Models\Merek;
 use App\Repositories\MerekRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -152,10 +151,5 @@ class MerekController extends AppBaseController
         Flash::success('Merek deleted successfully.');
 
         return redirect(route('mereks.index'));
-    }
-
-    public function autocomplete(Request $request){
-        $data=Merek::select("nama as name")->where('nama','like',"%{$request->input('query')}%")->get();
-        return response()->json($data);
     }
 }

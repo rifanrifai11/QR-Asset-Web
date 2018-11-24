@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTipeRequest;
 use App\Http\Requests\UpdateTipeRequest;
-use App\Models\Tipe;
 use App\Repositories\TipeRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -152,10 +151,5 @@ class TipeController extends AppBaseController
         Flash::success('Tipe deleted successfully.');
 
         return redirect(route('tipes.index'));
-    }
-
-    public function autocomplete(Request $request){
-        $data=Tipe::select("nama as name")->where('nama','like',"%{$request->input('query')}%")->get();
-        return response()->json($data);
     }
 }

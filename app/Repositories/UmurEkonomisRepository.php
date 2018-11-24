@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class UmurEkonomisRepository
  * @package App\Repositories
- * @version November 4, 2017, 9:23 am UTC
+ * @version November 24, 2018, 5:49 pm UTC
  *
  * @method UmurEkonomis findWithoutFail($id, $columns = ['*'])
  * @method UmurEkonomis find($id, $columns = ['*'])

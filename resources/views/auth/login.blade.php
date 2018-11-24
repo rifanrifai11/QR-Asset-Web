@@ -34,7 +34,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>Manajemen Aset </b>PT. Riung</a>
+        <a href="{{ url('/home') }}"><b>QR Asset</a>
     </div>
 
     <!-- /.login-logo -->

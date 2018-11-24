@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGrubAsetRequest;
 use App\Http\Requests\UpdateGrubAsetRequest;
-use App\Models\GrubAset;
-use App\Models\KategoriAset;
-use App\Models\UmurEkonomis;
 use App\Repositories\GrubAsetRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -106,11 +103,8 @@ class GrubAsetController extends AppBaseController
 
             return redirect(route('grubAsets.index'));
         }
-        $parent_grub_aset=GrubAset::whereNull('parent_grub_aset_kode')->pluck('nama','kode');
-        $umur_ekonomis=UmurEkonomis::pluck('nama','id');
-        $kategori_aset=KategoriAset::pluck('nama','id');
 
-        return view('grub_asets.edit',compact('parent_grub_aset','umur_ekonomis','kategori_aset' ))->with('grubAset', $grubAset);
+        return view('grub_asets.edit')->with('grubAset', $grubAset);
     }
 
     /**

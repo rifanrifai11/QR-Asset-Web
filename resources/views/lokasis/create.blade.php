@@ -1,24 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Lokasi
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
+<div class="content-body">
+    <section id="horizontal-form-layouts">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card overflow-hidden">
+                    <div class="card-content">
+                        <div class="media align-items-stretch">
+                            <div class="bg-success p-2 media-middle">
+                                <i class="fa fa-pencil-square-o font-large-2 text-white"></i>
+                            </div>
+                            <div class="media-body p-1">
+                                <h2 class="success">Lokasi</h2>
+                                <span style="margin-top: -5px">Membuat data Lokasi baru.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'lokasis.store']) !!}
+            <div class="col-md-12">
 
-                        @include('lokasis.fields')
+                @include('adminlte-templates::common.errors')
 
-                    {!! Form::close() !!}
+                <div class="card">
+                    <div class="card-content collpase show">
+                        <div class="card-body">
+                            {!! Form::open(['route' => 'lokasis.store','class'=>'form form-horizontal']) !!}
+                            <div class="form-body">
+                                <h4 class="form-section"><i class="ft-user"></i> Lokasi</h4>
+
+                            @include('lokasis.fields')
+
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
 @endsection

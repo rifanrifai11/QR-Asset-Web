@@ -25,7 +25,7 @@
             <div class="col-xs-6" style="border-style: solid; border-width: thin; ">
                 <div class="row" >
                     <div class="col-xs-12" style="text-align: center; border-bottom-style: solid; border-width: thin;">
-                        <h4><b>PT. RIUNG MITRA LESTARI</b></h4>
+                        <h4><b>QR Asset</b></h4>
                     </div>
                     <div class="col-xs-4"  >
                         <img class="img-responsive" style="padding: 5px;" src="data:image/png;base64,{{DNS2D::getBarcodePNG($dataAset->kode_data_aset, 'QRCODE')}}" alt="barcode" />
@@ -42,7 +42,7 @@
             <div class="col-xs-6" style="border-style: solid; border-width: thin; ">
                 <div class="row" >
                     <div class="col-xs-12" style="text-align: center; border-bottom-style: solid; border-width: thin;">
-                        <h4><b>PT. RIUNG MITRA LESTARI</b></h4>
+                        <h4><b>QR Asset</b></h4>
                     </div>
                     <div class="col-xs-4"  >
                         <img class="img-responsive" style="padding: 5px;" src="data:image/png;base64,{{DNS2D::getBarcodePNG($dataAset->kode_data_aset, 'QRCODE')}}" alt="barcode" />

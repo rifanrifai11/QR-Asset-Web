@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateVendorRequest;
 use App\Http\Requests\UpdateVendorRequest;
-use App\Models\Vendor;
 use App\Repositories\VendorRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -152,17 +151,5 @@ class VendorController extends AppBaseController
         Flash::success('Vendor deleted successfully.');
 
         return redirect(route('vendors.index'));
-    }
-
-    public function autocomplete(Request $request){
-        $data=Vendor::select("nama as name")->where('nama','like',"%{$request->input('query')}%")->get();
-        return response()->json($data);
-    }
-
-    public function getVendor(Request $request){
-        return 'ok';
-        $nama=$request->only('name');
-        $data=Vendor::where('nama',$nama)->first();
-        return response()->json($data);
     }
 }

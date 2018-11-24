@@ -8,16 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Jobsite
  * @package App\Models
- * @version November 12, 2017, 7:17 am UTC
+ * @version November 24, 2018, 5:57 pm UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
- * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
- * @property \Illuminate\Database\Eloquent\Collection asetPembelian
- * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection DataAset
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string nama
  * @property string keterangan
  */
@@ -59,16 +52,5 @@ class Jobsite extends Model
         
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function dataAsets()
-    {
-        return $this->hasMany(\App\Models\DataAset::class);
-    }
-
-    public function asetBasts()
-    {
-        return $this->hasMany(\App\Models\AsetBast::class);
-    }
+    
 }

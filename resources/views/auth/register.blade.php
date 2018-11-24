@@ -37,7 +37,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>Manajemen Aset </b>PT. Riung</a>
+        <a href="{{ url('/home') }}"><b>QR Asset</a>
     </div>
 
     <div class="register-box-body">

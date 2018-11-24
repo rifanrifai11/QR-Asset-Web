@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class MerekRepository
  * @package App\Repositories
- * @version November 4, 2017, 9:20 am UTC
+ * @version November 24, 2018, 5:57 pm UTC
  *
  * @method Merek findWithoutFail($id, $columns = ['*'])
  * @method Merek find($id, $columns = ['*'])

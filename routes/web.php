@@ -98,3 +98,22 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::resource('lokasis', 'LokasiController');
+
+Route::resource('umurEkonomis', 'UmurEkonomisController');
+
+Route::resource('departemens', 'DepartemenController');
+
+Route::resource('kondisiAsets', 'KondisiAsetController');
+
+Route::resource('kategoriAsets', 'KategoriAsetController');
+
+
+Route::resource('vendors', 'VendorController');
+
+Route::resource('jobsites', 'JobsiteController');
+
+Route::resource('mereks', 'MerekController');
+
+Route::resource('tipes', 'TipeController');
+
+Route::resource('lokasis', 'LokasiController');
