@@ -117,3 +117,7 @@ Route::resource('mereks', 'MerekController');
 Route::resource('tipes', 'TipeController');
 
 Route::resource('lokasis', 'LokasiController');
+
+Route::resource('asetTakings', 'AsetTakingController');
+
+Route::resource('penggunaAsets', 'PenggunaAsetController');

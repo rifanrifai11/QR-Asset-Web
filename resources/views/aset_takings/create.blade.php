@@ -1,24 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Aset Taking
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
+<div class="content-body">
+    <section id="horizontal-form-layouts">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card overflow-hidden">
+                    <div class="card-content">
+                        <div class="media align-items-stretch">
+                            <div class="bg-success p-2 media-middle">
+                                <i class="fa fa-pencil-square-o font-large-2 text-white"></i>
+                            </div>
+                            <div class="media-body p-1">
+                                <h2 class="success">Aset Taking</h2>
+                                <span style="margin-top: -5px">Membuat data Aset Taking baru.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'asetTakings.store']) !!}
+            <div class="col-md-12">
 
-                        @include('aset_takings.fields')
+                @include('adminlte-templates::common.errors')
 
-                    {!! Form::close() !!}
+                <div class="card">
+                    <div class="card-content collpase show">
+                        <div class="card-body">
+                            {!! Form::open(['route' => 'asetTakings.store','class'=>'form form-horizontal']) !!}
+                            <div class="form-body">
+                                <h4 class="form-section"><i class="ft-user"></i> Aset Taking</h4>
+
+                            @include('aset_takings.fields')
+
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
 @endsection

@@ -22,9 +22,9 @@
     {!! Form::text('lokasi_kerja', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Departemen Field -->
+<!-- Departemen Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('departemen_id', 'Departemen:') !!}
+    {!! Form::label('departemen_id', 'Departemen Id:') !!}
     {!! Form::number('departemen_id', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -47,7 +47,10 @@
 </div>
 
 <!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('penggunaAsets.index') !!}" class="btn btn-default">Cancel</a>
+<div class="form-actions">
+    <a href="{!! route('penggunaAsets.index') !!}" class="btn btn-danger">
+        <i class="fa fa-check-square-o"></i> Cancel
+    </a>
+    {!! Form::submit('Save', ['class' => 'btn btn-success mr-1']) !!}
 </div>
+
