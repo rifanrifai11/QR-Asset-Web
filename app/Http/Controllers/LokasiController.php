@@ -14,11 +14,11 @@ use Response;
 class LokasiController extends AppBaseController
 {
     /** @var  LokasiRepository */
-    private $lokasiRepository;
+    private $LokasiRepository;
 
-    public function __construct(LokasiRepository $lokasiRepo)
+    public function __construct(LokasiRepository $LokasiRepo)
     {
-        $this->lokasiRepository = $lokasiRepo;
+        $this->LokasiRepository = $LokasiRepo;
     }
 
     /**
@@ -29,8 +29,8 @@ class LokasiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->lokasiRepository->pushCriteria(new RequestCriteria($request));
-        $lokasis = $this->lokasiRepository->all();
+        $this->LokasiRepository->pushCriteria(new RequestCriteria($request));
+        $lokasis = $this->LokasiRepository->all();
 
         return view('lokasis.index')
             ->with('lokasis', $lokasis);
@@ -57,7 +57,7 @@ class LokasiController extends AppBaseController
     {
         $input = $request->all();
 
-        $lokasi = $this->lokasiRepository->create($input);
+        $Lokasi = $this->LokasiRepository->create($input);
 
         Flash::success('Lokasi saved successfully.');
 
@@ -73,7 +73,7 @@ class LokasiController extends AppBaseController
      */
     public function show($id)
     {
-        $lokasi = $this->lokasiRepository->findWithoutFail($id);
+        $lokasi = $this->LokasiRepository->findWithoutFail($id);
 
         if (empty($lokasi)) {
             Flash::error('Lokasi not found');
@@ -93,7 +93,7 @@ class LokasiController extends AppBaseController
      */
     public function edit($id)
     {
-        $lokasi = $this->lokasiRepository->findWithoutFail($id);
+        $lokasi = $this->LokasiRepository->findWithoutFail($id);
 
         if (empty($lokasi)) {
             Flash::error('Lokasi not found');
@@ -114,7 +114,7 @@ class LokasiController extends AppBaseController
      */
     public function update($id, UpdateLokasiRequest $request)
     {
-        $lokasi = $this->lokasiRepository->findWithoutFail($id);
+        $lokasi = $this->LokasiRepository->findWithoutFail($id);
 
         if (empty($lokasi)) {
             Flash::error('Lokasi not found');
@@ -122,7 +122,7 @@ class LokasiController extends AppBaseController
             return redirect(route('lokasis.index'));
         }
 
-        $lokasi = $this->lokasiRepository->update($request->all(), $id);
+        $lokasi = $this->LokasiRepository->update($request->all(), $id);
 
         Flash::success('Lokasi updated successfully.');
 
@@ -138,7 +138,7 @@ class LokasiController extends AppBaseController
      */
     public function destroy($id)
     {
-        $lokasi = $this->lokasiRepository->findWithoutFail($id);
+        $lokasi = $this->LokasiRepository->findWithoutFail($id);
 
         if (empty($lokasi)) {
             Flash::error('Lokasi not found');
@@ -146,7 +146,7 @@ class LokasiController extends AppBaseController
             return redirect(route('lokasis.index'));
         }
 
-        $this->lokasiRepository->delete($id);
+        $this->LokasiRepository->delete($id);
 
         Flash::success('Lokasi deleted successfully.');
 

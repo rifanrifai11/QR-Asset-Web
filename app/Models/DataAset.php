@@ -2,22 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class DataAset
  * @package App\Models
- * @version November 25, 2018, 11:15 am UTC
+ * @version November 4, 2017, 9:21 am UTC
  *
- * @property \App\Models\Departeman departeman
- * @property \App\Models\GrubAset grubAset
- * @property \App\Models\Jobsite jobsite
- * @property \App\Models\Lokasi lokasi
- * @property \App\Models\Merek merek
- * @property \App\Models\Tipe tipe
- * @property \App\Models\Vendor vendor
  * @property \Illuminate\Database\Eloquent\Collection AsetBast
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection AsetHilang
  * @property \Illuminate\Database\Eloquent\Collection AsetMutasi
  * @property \Illuminate\Database\Eloquent\Collection AsetPelepasan
@@ -26,28 +21,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection AsetPengembalian
  * @property \Illuminate\Database\Eloquent\Collection AsetRusak
  * @property \Illuminate\Database\Eloquent\Collection AsetTaking
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property integer aset_id
  * @property integer urut
  * @property string kode_data_aset
  * @property string spesifikasi
- * @property string no_registrasi
  * @property date tanggal_registrasi
- * @property integer lokasi_id
- * @property integer tipe_id
- * @property integer vendor_id
- * @property integer merek_id
  * @property string foto1
  * @property string foto2
  * @property string foto3
  * @property string foto4
- * @property string grub_aset_kode
- * @property integer jobsite_id
- * @property string serial_number
- * @property integer departemen_id
- * @property string keterangan
- * @property string nama
  */
 class DataAset extends Model
 {
@@ -61,27 +46,24 @@ class DataAset extends Model
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
+        'nama',
+        'grub_aset_kode',
         'urut',
         'kode_data_aset',
+        'tipe_id',
+        'merek_id',
+        'vendor_id',
         'spesifikasi',
         'no_registrasi',
         'tanggal_registrasi',
+        'jobsite_id',
+        'departemen_id',
         'lokasi_id',
-        'tipe_id',
-        'vendor_id',
-        'merek_id',
         'foto1',
         'foto2',
         'foto3',
-        'foto4',
-        'grub_aset_kode',
-        'jobsite_id',
-        'serial_number',
-        'departemen_id',
-        'keterangan',
-        'nama'
+        'foto4'
     ];
 
     /**
@@ -91,25 +73,22 @@ class DataAset extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'nama'=>'string',
+        'grub_aset_kode' => 'string',
         'urut' => 'integer',
         'kode_data_aset' => 'string',
+        'tipe_id'=> 'integer',
+        'merek_id'=> 'integer',
+        'vendor_id'=> 'integer',
         'spesifikasi' => 'string',
-        'no_registrasi' => 'string',
+        'no_registrasi'=>'string',
         'tanggal_registrasi' => 'date',
-        'lokasi_id' => 'integer',
-        'tipe_id' => 'integer',
-        'vendor_id' => 'integer',
-        'merek_id' => 'integer',
+        'jobsite_id'=>'integer',
+        'departemen_id'=>'integer',
         'foto1' => 'string',
         'foto2' => 'string',
         'foto3' => 'string',
-        'foto4' => 'string',
-        'grub_aset_kode' => 'string',
-        'jobsite_id' => 'integer',
-        'serial_number' => 'string',
-        'departemen_id' => 'integer',
-        'keterangan' => 'string',
-        'nama' => 'string'
+        'foto4' => 'string'
     ];
 
     /**
@@ -121,60 +100,16 @@ class DataAset extends Model
         
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function departeman()
-    {
-        return $this->belongsTo(\App\Models\Departeman::class);
-    }
+    protected $appends = ['nilai_sisa','masa_pakai_bulan',
+        'masa_pakai_tahun','harga_sekarang_bulan','harga_sekarang_tahun',
+        'penyusutan_per_bulan','penyusutan_per_tahun','kondisi'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function grubAset()
+    public function grub_asets()
     {
-        return $this->belongsTo(\App\Models\GrubAset::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function jobsite()
-    {
-        return $this->belongsTo(\App\Models\Jobsite::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function lokasi()
-    {
-        return $this->belongsTo(\App\Models\Lokasi::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function merek()
-    {
-        return $this->belongsTo(\App\Models\Merek::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function tipe()
-    {
-        return $this->belongsTo(\App\Models\Tipe::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function vendor()
-    {
-        return $this->belongsTo(\App\Models\Vendor::class);
+        return $this->belongsTo(\App\Models\GrubAset::class,'grub_aset_kode');
     }
 
     /**
@@ -183,6 +118,11 @@ class DataAset extends Model
     public function asetBasts()
     {
         return $this->hasMany(\App\Models\AsetBast::class);
+    }
+
+    public function latestAsetBasts()
+    {
+        return $this->hasMany(\App\Models\AsetBast::class)->latest()->first();
     }
 
     /**
@@ -217,6 +157,11 @@ class DataAset extends Model
         return $this->hasMany(\App\Models\AsetPembelian::class);
     }
 
+    public function latestAsetPembelian()
+    {
+        return $this->hasMany(\App\Models\AsetPembelian::class)->latest();
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
@@ -249,11 +194,97 @@ class DataAset extends Model
         return $this->hasMany(\App\Models\AsetTaking::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function penggunaAsets()
+    public function latestAsetTakings()
     {
-        return $this->belongsToMany(\App\Models\PenggunaAset::class, 'data_aset_has_pengguna_aset');
+        return $this->hasMany(\App\Models\AsetTaking::class)->latest();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function merek()
+    {
+        return $this->belongsTo(\App\Models\Merek::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function tipe()
+    {
+        return $this->belongsTo(\App\Models\Tipe::class);
+    }
+
+    public function departemen()
+    {
+        return $this->belongsTo(\App\Models\Departemen::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function vendor()
+    {
+        return $this->belongsTo(\App\Models\Vendor::class);
+    }
+
+    public function jobsite()
+    {
+        return $this->belongsTo(\App\Models\Jobsite::class);
+    }
+
+    public function lokasi()
+    {
+        return $this->belongsTo(\App\Models\Lokasi::class);
+    }
+
+    public function getNilaiSisaAttribute(){
+        return $this->grub_asets->umurEkonomis->nilai_rumus* $this->latestAsetPembelian()->first()->harga_barang;
+    }
+
+    public function getPenyusutanPerTahunAttribute(){
+        return ($this->latestAsetPembelian()->first()->harga_barang-$this->nilai_sisa)/$this->grub_asets->umurEkonomis->tahun;
+    }
+
+    public function getPenyusutanPerBulanAttribute(){
+        return $this->penyusutan_per_tahun/12;
+    }
+
+    public function getMasaPakaiBulanAttribute(){
+        $now=Carbon::now();
+        $tanggal_pembelian=Carbon::parse($this->latestAsetPembelian()->first()->tanggal_pembelian);
+        return $now->diffInMonths($tanggal_pembelian);
+    }
+
+    public function getMasaPakaiTahunAttribute(){
+        $now=Carbon::now();
+        $tanggal_pembelian=Carbon::parse( $this->latestAsetPembelian()->first()->tanggal_pembelian);
+        return $now->diffInYears($tanggal_pembelian);
+    }
+
+    public function getHargaSekarangBulanAttribute(){
+        if($this->masa_pakai_bulan<=$this->grub_asets->umurEkonomis->tahun*12){
+            return $this->latestAsetPembelian()->first()->harga_barang-$this->masa_pakai_bulan*$this->penyusutan_per_bulan;
+        }else{
+            return $this->latestAsetPembelian()->first()->harga_barang*$this->grub_asets->persentase_sisa/100;
+        }
+    }
+
+    public function getHargaSekarangTahunAttribute(){
+        if($this->masa_pakai_tahun<=$this->grub_asets->umurEkonomis->tahun){
+            return $this->latestAsetPembelian()->first()->harga_barang-$this->masa_pakai_tahun*$this->penyusutan_per_tahun;
+        }else{
+            return $this->latestAsetPembelian()->first()->harga_barang*$this->grub_asets->persentase_sisa/100;
+        }
+    }
+
+    public function getKondisiAttribute(){
+        if(is_null($this->latestAsetTakings())<=0){
+            return "Baik";
+        }else{
+            return $this->latestAsetTakings()->kondisiAset->nama;
+        }
+    }
+
+
 }

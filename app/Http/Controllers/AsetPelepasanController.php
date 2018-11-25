@@ -61,7 +61,11 @@ class AsetPelepasanController extends AppBaseController
 
         Flash::success('Aset Pelepasan saved successfully.');
 
-        return redirect(route('asetPelepasans.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetPelepasans.index'));
+        }
     }
 
     /**
@@ -115,7 +119,7 @@ class AsetPelepasanController extends AppBaseController
     public function update($id, UpdateAsetPelepasanRequest $request)
     {
         $asetPelepasan = $this->asetPelepasanRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetPelepasan)) {
             Flash::error('Aset Pelepasan not found');
 
@@ -126,7 +130,11 @@ class AsetPelepasanController extends AppBaseController
 
         Flash::success('Aset Pelepasan updated successfully.');
 
-        return redirect(route('asetPelepasans.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetPelepasans.index'));
+        }
     }
 
     /**
@@ -136,10 +144,10 @@ class AsetPelepasanController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $asetPelepasan = $this->asetPelepasanRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetPelepasan)) {
             Flash::error('Aset Pelepasan not found');
 
@@ -150,6 +158,10 @@ class AsetPelepasanController extends AppBaseController
 
         Flash::success('Aset Pelepasan deleted successfully.');
 
-        return redirect(route('asetPelepasans.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetPelepasans.index'));
+        }
     }
 }

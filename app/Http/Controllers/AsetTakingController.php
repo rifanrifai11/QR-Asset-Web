@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAsetTakingRequest;
 use App\Http\Requests\UpdateAsetTakingRequest;
+use App\Models\AsetTaking;
 use App\Repositories\AsetTakingRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class AsetTakingController extends AppBaseController
     public function index(Request $request)
     {
         $this->asetTakingRepository->pushCriteria(new RequestCriteria($request));
-        $asetTakings = $this->asetTakingRepository->all();
+        $asetTakings = $this->asetTakingRepository->orderBy('created_at','desc')->all();
 
         return view('aset_takings.index')
             ->with('asetTakings', $asetTakings);
@@ -61,7 +62,11 @@ class AsetTakingController extends AppBaseController
 
         Flash::success('Aset Taking saved successfully.');
 
-        return redirect(route('asetTakings.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetTakings.index'));
+        }
     }
 
     /**
@@ -115,7 +120,7 @@ class AsetTakingController extends AppBaseController
     public function update($id, UpdateAsetTakingRequest $request)
     {
         $asetTaking = $this->asetTakingRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetTaking)) {
             Flash::error('Aset Taking not found');
 
@@ -126,7 +131,11 @@ class AsetTakingController extends AppBaseController
 
         Flash::success('Aset Taking updated successfully.');
 
-        return redirect(route('asetTakings.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetTakings.index'));
+        }
     }
 
     /**
@@ -136,10 +145,10 @@ class AsetTakingController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $asetTaking = $this->asetTakingRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetTaking)) {
             Flash::error('Aset Taking not found');
 
@@ -150,6 +159,20 @@ class AsetTakingController extends AppBaseController
 
         Flash::success('Aset Taking deleted successfully.');
 
-        return redirect(route('asetTakings.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetTakings.index'));
+        }
+    }
+
+    public function downloadPDF(){
+        $asetTakings = AsetTaking::orderBy('created_at','desc')->get();
+
+        return view('aset_takings.pdf', compact('asetTakings'));
+/*
+        $pdf = PDF::loadView('data_asets.pdf', compact('dataAsets'));
+        return $pdf->download('report_data_aset.pdf');*/
+
     }
 }

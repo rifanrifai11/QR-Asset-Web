@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Merek
  * @package App\Models
- * @version November 25, 2018, 11:21 am UTC
+ * @version November 4, 2017, 9:20 am UTC
  *
+ * @property \Illuminate\Database\Eloquent\Collection Aset
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection DataAset
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string nama
@@ -62,7 +63,7 @@ class Merek extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function dataAsets()
+    public function data_asets()
     {
         return $this->hasMany(\App\Models\DataAset::class);
     }

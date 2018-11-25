@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAsetMutasiRequest;
 use App\Http\Requests\UpdateAsetMutasiRequest;
+use App\Models\Departemen;
 use App\Repositories\AsetMutasiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class AsetMutasiController extends AppBaseController
      */
     public function create()
     {
-        return view('aset_mutasis.create');
+        $departemen=Departemen::pluck('nama','id');
+        return view('aset_mutasis.create',compact('departemen'));
     }
 
     /**
@@ -61,7 +63,11 @@ class AsetMutasiController extends AppBaseController
 
         Flash::success('Aset Mutasi saved successfully.');
 
-        return redirect(route('asetMutasis.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetMutasis.index'));
+        }
     }
 
     /**
@@ -100,8 +106,8 @@ class AsetMutasiController extends AppBaseController
 
             return redirect(route('asetMutasis.index'));
         }
-
-        return view('aset_mutasis.edit')->with('asetMutasi', $asetMutasi);
+        $departemen=Departemen::pluck('nama','id');
+        return view('aset_mutasis.edit',compact('departemen'))->with('asetMutasi', $asetMutasi);
     }
 
     /**
@@ -115,7 +121,7 @@ class AsetMutasiController extends AppBaseController
     public function update($id, UpdateAsetMutasiRequest $request)
     {
         $asetMutasi = $this->asetMutasiRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetMutasi)) {
             Flash::error('Aset Mutasi not found');
 
@@ -126,7 +132,11 @@ class AsetMutasiController extends AppBaseController
 
         Flash::success('Aset Mutasi updated successfully.');
 
-        return redirect(route('asetMutasis.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetMutasis.index'));
+        }
     }
 
     /**
@@ -136,10 +146,10 @@ class AsetMutasiController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $asetMutasi = $this->asetMutasiRepository->findWithoutFail($id);
-
+        $input=$request->all();
         if (empty($asetMutasi)) {
             Flash::error('Aset Mutasi not found');
 
@@ -150,6 +160,10 @@ class AsetMutasiController extends AppBaseController
 
         Flash::success('Aset Mutasi deleted successfully.');
 
-        return redirect(route('asetMutasis.index'));
+        if(isset($input['url_callback'])){
+            return redirect(url($input['url_callback']));
+        }else {
+            return redirect(route('asetMutasis.index'));
+        }
     }
 }

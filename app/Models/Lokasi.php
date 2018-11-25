@@ -6,9 +6,9 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Lokasi
+ * Class lokasi
  * @package App\Models
- * @version November 25, 2018, 11:21 am UTC
+ * @version February 18, 2018, 1:44 pm UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan

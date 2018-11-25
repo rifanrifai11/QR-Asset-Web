@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class KondisiAset
  * @package App\Models
- * @version November 25, 2018, 11:21 am UTC
+ * @version November 4, 2017, 9:18 am UTC
  *
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
  * @property \Illuminate\Database\Eloquent\Collection AsetTaking
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string nama
@@ -24,7 +25,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class KondisiAset extends Model
 {
     use SoftDeletes;
+    /**
+     * The "type" of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
 
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
     public $table = 'kondisi_aset';
     
     const CREATED_AT = 'created_at';
@@ -35,6 +48,7 @@ class KondisiAset extends Model
 
 
     public $fillable = [
+        'id',
         'nama',
         'keterangan'
     ];

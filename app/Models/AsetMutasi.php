@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetMutasi
  * @package App\Models
- * @version November 25, 2018, 11:09 am UTC
+ * @version November 7, 2017, 3:44 am UTC
  *
  * @property \App\Models\Departeman departeman
  * @property \App\Models\DataAset dataAset
- * @property \App\Models\User user
+ * @property \App\User user
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property integer nomor_surat
@@ -109,6 +110,6 @@ class AsetMutasi extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class,'users_id');
     }
 }
