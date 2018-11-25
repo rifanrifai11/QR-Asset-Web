@@ -12,60 +12,89 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
-Route::resource('asetBasts', 'AsetBastController');
+Route::group(['middleware' => ['auth']], function () {
+// Zizaco Entrust
+    Route::resource('roles', 'RoleController');
+    Route::resource('user_role', 'UserRoleController', ['except' => [
+        'create', 'store', 'show', 'destroy',
+    ]]);
+    Route::resource('permissions', 'PermissionController');
+    Route::resource('users', 'UserController');
+//end Zizaco
 
-Route::resource('asetHilangs', 'AsetHilangController');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('asetMutasis', 'AsetMutasiController');
+    Route::resource('departemens', 'DepartemenController');
 
-Route::resource('asetPelepasans', 'AsetPelepasanController');
+    Route::resource('kondisiAsets', 'KondisiAsetController');
 
-Route::resource('asetPembelians', 'AsetPembelianController');
+    Route::resource('vendors', 'VendorController');
 
-Route::resource('asetPeminjamen', 'AsetPeminjamanController');
+    Route::resource('mereks', 'MerekController');
 
-Route::resource('asetPengembalians', 'AsetPengembalianController');
+    Route::resource('kategoriAsets', 'KategoriAsetController');
 
-Route::resource('asetTakings', 'AsetTakingController');
+    Route::resource('penggunaAsets', 'PenggunaAsetController');
 
-Route::resource('dataAsets', 'DataAsetController');
+    Route::resource('asets', 'AsetController');
 
-Route::resource('departemens', 'DepartemenController');
+    Route::resource('dataAsets', 'DataAsetController');
+    Route::get('report/dataAsets','DataAsetController@downloadPDF');
+    Route::get('aset_kode_baru/{grub_aset_kode}',['as'=>'get_aset_kode_baru','uses'=>'DataAsetController@getKodeUrutDataAset']);
+    Route::get('download_all_barcode','DataAsetController@downloadAllBarcode');
 
-Route::resource('grupAsets', 'GrupAsetController');
+    Route::get('download_double_barcode/{id}','DataAsetController@downloadDoubleBarcode');
 
-Route::resource('jobsites', 'JobsiteController');
+    Route::resource('tipes', 'TipeController');
 
-Route::resource('kategoriAsets', 'KategoriAsetController');
+    Route::resource('umurEkonomis', 'UmurEkonomisController');
 
-Route::resource('kondisiAsets', 'KondisiAsetController');
+    Route::resource('asetTakings', 'AsetTakingController');
+    Route::get('report/asetTakings','AsetTakingController@downloadPDF');
+
+    Route::resource('grubAsets', 'GrubAsetController');
+
+    Route::resource('penggunaAsets', 'PenggunaAsetController');
+
+    Route::resource('asets', 'AsetController');
+
+    Route::resource('grubAsets', 'GrubAsetController');
+
+    Route::resource('asetPengembalians', 'AsetPengembalianController');
+
+    Route::resource('asetMutasis', 'AsetMutasiController');
+
+    Route::resource('asetPeminjamen', 'AsetPeminjamanController');
+    Route::get('asetPeminjamen/report/{id}','AsetPeminjamanController@print_report');
+
+    Route::resource('asetPelepasans', 'AsetPelepasanController');
+
+    Route::resource('asetBasts', 'AsetBastController');
+    Route::get('asetBasts/report/{id}','AsetBastController@print_report');
+
+    Route::resource('asetRusaks', 'AsetRusakController');
+
+    Route::resource('asetHilangs', 'AsetHilangController');
+
+    Route::resource('asetPembelians', 'AsetPembelianController');
+    Route::get('asetPembelians/report/{id}','AsetPembelianController@print_report');
+
+
+//AutoComplete
+    Route::get('/tipe/autocomplete',['as'=>'tipe_autocomplete','uses'=>'TipeController@autocomplete']);
+    Route::get('/merek/autocomplete',['as'=>'merek_autocomplete','uses'=>'MerekController@autocomplete']);
+    Route::get('/vendor/autocomplete',['as'=>'vendor_autocomplete','uses'=>'VendorController@autocomplete']);
+
+
+    Route::resource('jobsites', 'JobsiteController');
+});
+
 
 Route::resource('lokasis', 'LokasiController');
-
-Route::resource('mereks', 'MerekController');
-
-Route::resource('penggunaAsets', 'PenggunaAsetController');
-
-Route::resource('permissions', 'PermissionsController');
-
-Route::resource('permissionRoles', 'PermissionRoleController');
-
-Route::resource('roles', 'RolesController');
-
-Route::resource('roleUsers', 'RoleUserController');
-
-Route::resource('tipes', 'TipeController');
-
-Route::resource('umurEkonomis', 'UmurEkonomisController');
-
-Route::resource('users', 'UsersController');
-
-Route::resource('vendors', 'VendorController');
