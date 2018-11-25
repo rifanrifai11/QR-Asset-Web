@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Departemen
  * @package App\Models
- * @version November 4, 2017, 9:18 am UTC
+ * @version November 25, 2018, 11:17 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection AsetBast
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection AsetMutasi
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
@@ -19,7 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection AsetPeminjaman
  * @property \Illuminate\Database\Eloquent\Collection AsetPengembalian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
+ * @property \Illuminate\Database\Eloquent\Collection DataAset
+ * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection PenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
@@ -70,11 +70,6 @@ class Departemen extends Model
         
     ];
 
-    public function parent()
-    {
-        return $this->belongsTo(\App\Models\Departemen::class,'parent_departemen_id');
-    }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
@@ -105,6 +100,14 @@ class Departemen extends Model
     public function asetPengembalians()
     {
         return $this->hasMany(\App\Models\AsetPengembalian::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function dataAsets()
+    {
+        return $this->hasMany(\App\Models\DataAset::class);
     }
 
     /**

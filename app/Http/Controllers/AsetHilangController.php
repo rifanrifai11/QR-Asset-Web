@@ -61,11 +61,7 @@ class AsetHilangController extends AppBaseController
 
         Flash::success('Aset Hilang saved successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetHilangs.index'));
-        }
+        return redirect(route('asetHilangs.index'));
     }
 
     /**
@@ -119,7 +115,7 @@ class AsetHilangController extends AppBaseController
     public function update($id, UpdateAsetHilangRequest $request)
     {
         $asetHilang = $this->asetHilangRepository->findWithoutFail($id);
-        $input=$request->all();
+
         if (empty($asetHilang)) {
             Flash::error('Aset Hilang not found');
 
@@ -130,11 +126,7 @@ class AsetHilangController extends AppBaseController
 
         Flash::success('Aset Hilang updated successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetHilangs.index'));
-        }
+        return redirect(route('asetHilangs.index'));
     }
 
     /**
@@ -144,10 +136,10 @@ class AsetHilangController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
         $asetHilang = $this->asetHilangRepository->findWithoutFail($id);
-        $input=$request->all();
+
         if (empty($asetHilang)) {
             Flash::error('Aset Hilang not found');
 
@@ -158,10 +150,6 @@ class AsetHilangController extends AppBaseController
 
         Flash::success('Aset Hilang deleted successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetHilangs.index'));
-        }
+        return redirect(route('asetHilangs.index'));
     }
 }

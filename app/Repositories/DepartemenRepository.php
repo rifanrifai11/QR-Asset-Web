@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class DepartemenRepository
  * @package App\Repositories
- * @version November 4, 2017, 9:18 am UTC
+ * @version November 25, 2018, 11:17 am UTC
  *
  * @method Departemen findWithoutFail($id, $columns = ['*'])
  * @method Departemen find($id, $columns = ['*'])

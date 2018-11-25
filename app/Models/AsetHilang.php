@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetHilang
  * @package App\Models
- * @version November 7, 2017, 3:51 am UTC
+ * @version November 25, 2018, 11:08 am UTC
  *
  * @property \App\Models\DataAset dataAset
- * @property \App\User user
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
+ * @property \App\Models\User user
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
+ * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property integer nomor_surat
@@ -111,6 +110,6 @@ class AsetHilang extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\User::class,'users_id');
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

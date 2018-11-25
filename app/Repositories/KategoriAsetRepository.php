@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class KategoriAsetRepository
  * @package App\Repositories
- * @version November 4, 2017, 9:20 am UTC
+ * @version November 25, 2018, 11:20 am UTC
  *
  * @method KategoriAset findWithoutFail($id, $columns = ['*'])
  * @method KategoriAset find($id, $columns = ['*'])

@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetMutasiRepository
  * @package App\Repositories
- * @version November 7, 2017, 3:44 am UTC
+ * @version November 25, 2018, 11:09 am UTC
  *
  * @method AsetMutasi findWithoutFail($id, $columns = ['*'])
  * @method AsetMutasi find($id, $columns = ['*'])

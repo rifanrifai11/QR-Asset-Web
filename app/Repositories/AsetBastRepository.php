@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetBastRepository
  * @package App\Repositories
- * @version November 7, 2017, 3:50 am UTC
+ * @version November 25, 2018, 11:06 am UTC
  *
  * @method AsetBast findWithoutFail($id, $columns = ['*'])
  * @method AsetBast find($id, $columns = ['*'])
@@ -27,15 +27,17 @@ class AsetBastRepository extends BaseRepository
         'nama',
         'nik',
         'departemen_id',
+        'jobsite_id',
         'jabatan',
-        'jobsite',
         'atasan_langsung',
         'diserahkan_oleh',
         'jabatan_diserahkan',
         'cek_oleh',
         'jabatan_cek',
         'penerima_oleh',
-        'jabatan_penerima'
+        'jabatan_penerima',
+        'jabatan_project_manager',
+        'nama_project_manager'
     ];
 
     /**

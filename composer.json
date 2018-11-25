@@ -14,9 +14,7 @@
         "infyomlabs/adminlte-templates": "5.7.x-dev",
         "infyomlabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
-        "doctrine/dbal": "~2.3",
-        "milon/barcode": "^5.2",
-
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

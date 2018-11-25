@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class KondisiAsetRepository
  * @package App\Repositories
- * @version January 2, 2018, 9:16 am UTC
+ * @version November 25, 2018, 11:21 am UTC
  *
  * @method KondisiAset findWithoutFail($id, $columns = ['*'])
  * @method KondisiAset find($id, $columns = ['*'])

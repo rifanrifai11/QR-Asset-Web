@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetPembelianRepository
  * @package App\Repositories
- * @version November 7, 2017, 3:51 am UTC
+ * @version November 25, 2018, 11:11 am UTC
  *
  * @method AsetPembelian findWithoutFail($id, $columns = ['*'])
  * @method AsetPembelian find($id, $columns = ['*'])

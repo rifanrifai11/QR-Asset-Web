@@ -25,6 +25,6 @@ class CreateLokasiRequest extends FormRequest
      */
     public function rules()
     {
-        return lokasi::$rules;
+        return Lokasi::$rules;
     }
 }

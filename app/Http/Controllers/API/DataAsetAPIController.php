@@ -68,16 +68,10 @@ class DataAsetAPIController extends AppBaseController
      *
      * @return Response
      */
-    public function showByBarcode(Request $request)
+    public function show($id)
     {
-
-        $input= $request->all();
-
         /** @var DataAset $dataAset */
-        $dataAset = DataAset::with(['tipe', 'departemen','vendor','jobsite','latestAsetPembelian','asetBasts',
-            'latestAsetTakings'=>function($query){
-                $query->with('kondisiAset');
-            }])->where('kode_data_aset',$input['barcode'])->first();
+        $dataAset = $this->dataAsetRepository->findWithoutFail($id);
 
         if (empty($dataAset)) {
             return $this->sendError('Data Aset not found');

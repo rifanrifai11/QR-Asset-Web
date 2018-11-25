@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class KategoriAset
  * @package App\Models
- * @version November 4, 2017, 9:20 am UTC
+ * @version November 25, 2018, 11:20 am UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection Aset
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
+ * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection GrubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string kode
@@ -66,7 +65,7 @@ class KategoriAset extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function grub_asets()
+    public function grubAsets()
     {
         return $this->hasMany(\App\Models\GrubAset::class);
     }

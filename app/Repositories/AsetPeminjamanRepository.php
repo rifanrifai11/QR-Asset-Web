@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetPeminjamanRepository
  * @package App\Repositories
- * @version November 7, 2017, 3:49 am UTC
+ * @version November 25, 2018, 11:12 am UTC
  *
  * @method AsetPeminjaman findWithoutFail($id, $columns = ['*'])
  * @method AsetPeminjaman find($id, $columns = ['*'])

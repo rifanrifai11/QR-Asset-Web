@@ -5,12 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateAsetTakingAPIRequest;
 use App\Http\Requests\API\UpdateAsetTakingAPIRequest;
 use App\Models\AsetTaking;
-use App\Models\DataAset;
-use App\Models\KondisiAset;
 use App\Repositories\AsetTakingRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Support\Facades\Auth;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -57,22 +54,6 @@ class AsetTakingAPIController extends AppBaseController
     public function store(CreateAsetTakingAPIRequest $request)
     {
         $input = $request->all();
-
-        $dataAset=DataAset::where('kode_data_aset',$input['kode_data_aset'])->first();
-
-        if (empty($dataAset)) {
-            return $this->sendError('Data Aset tidak ditemukan');
-        }
-
-        $kondisiAset=KondisiAset::where('id',$input['kondisi_aset_id'])->first();
-
-        if (empty($kondisiAset)) {
-            return $this->sendError('Kondisi Aset tidak ditemukan');
-        }
-
-        $input['data_aset_id']=$dataAset->id;
-
-        $input['users_id']=Auth::id();
 
         $asetTakings = $this->asetTakingRepository->create($input);
 

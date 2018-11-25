@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetPeminjaman
  * @package App\Models
- * @version November 7, 2017, 3:49 am UTC
+ * @version November 25, 2018, 11:12 am UTC
  *
  * @property \App\Models\Departeman departeman
  * @property \App\Models\DataAset dataAset
- * @property \App\User user
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
+ * @property \App\Models\User user
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
+ * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property integer nomor_surat
@@ -31,8 +30,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string jabatan
  * @property string alasan
  * @property date tanggal_peminjaman
- * @property string|\Carbon\Carbon waktu_peminjaman_awal
- * @property string|\Carbon\Carbon waktu_peminjaman_akhir
+ * @property time waktu_peminjaman_awal
+ * @property time waktu_peminjaman_akhir
  * @property date tanggal_pengembalian
  * @property string|\Carbon\Carbon waktu_pengembalian
  * @property string jabatan_peminjam
@@ -107,9 +106,9 @@ class AsetPeminjaman extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function departemen()
+    public function departeman()
     {
-        return $this->belongsTo(\App\Models\Departemen::class);
+        return $this->belongsTo(\App\Models\Departeman::class);
     }
 
     /**
@@ -125,6 +124,6 @@ class AsetPeminjaman extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\User::class,'users_id');
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

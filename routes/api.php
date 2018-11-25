@@ -17,34 +17,53 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'jwt.auth'], function () {
-    //show,update
-    Route::resource('users', 'UserAPIController',['except' => [
-        'store','index','delete'
-    ]]);
 
-    //show,store
-    Route::resource('aset_takings', 'AsetTakingAPIController',['except' => [
-        'update','index','delete','show'
-    ]]);
+Route::resource('aset_basts', 'AsetBastAPIController');
 
-    //show
-    Route::get('data_asets/show', 'DataAsetAPIController@showByBarcode');
+Route::resource('aset_hilangs', 'AsetHilangAPIController');
 
-    Route::get('kondisi_asets', 'KondisiAsetAPIController@index');
+Route::resource('aset_mutasis', 'AsetMutasiAPIController');
 
-    Route::get('users/show', 'UserAPIController@show');
-});
+Route::resource('aset_pelepasans', 'AsetPelepasanAPIController');
 
+Route::resource('aset_pembelians', 'AsetPembelianAPIController');
 
-/*
+Route::resource('aset_peminjamen', 'AsetPeminjamanAPIController');
 
-//Route::get('users/show','UserAPIController@show');
+Route::resource('aset_pengembalians', 'AsetPengembalianAPIController');
 
-/*Route::post('users/update','UserAPIController@update');*/
+Route::resource('aset_takings', 'AsetTakingAPIController');
 
-/*Route::post('users/password','UserAPIController@changePassword');*/
+Route::resource('data_asets', 'DataAsetAPIController');
 
-Route::post('/vendors',['as'=>'get_vendor','uses'=>'VendorController@getVendor']);
+Route::resource('departemens', 'DepartemenAPIController');
 
-Route::post('token','AuthenticateAPIController@authenticate');
+Route::resource('grup_asets', 'GrupAsetAPIController');
+
+Route::resource('jobsites', 'JobsiteAPIController');
+
+Route::resource('kategori_asets', 'KategoriAsetAPIController');
+
+Route::resource('kondisi_asets', 'KondisiAsetAPIController');
+
+Route::resource('lokasis', 'LokasiAPIController');
+
+Route::resource('mereks', 'MerekAPIController');
+
+Route::resource('pengguna_asets', 'PenggunaAsetAPIController');
+
+Route::resource('permissions', 'PermissionsAPIController');
+
+Route::resource('permission_roles', 'PermissionRoleAPIController');
+
+Route::resource('roles', 'RolesAPIController');
+
+Route::resource('role_users', 'RoleUserAPIController');
+
+Route::resource('tipes', 'TipeAPIController');
+
+Route::resource('umur_ekonomis', 'UmurEkonomisAPIController');
+
+Route::resource('users', 'UsersAPIController');
+
+Route::resource('vendors', 'VendorAPIController');

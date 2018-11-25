@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class JobsiteRepository
  * @package App\Repositories
- * @version November 12, 2017, 7:17 am UTC
+ * @version November 25, 2018, 11:20 am UTC
  *
  * @method Jobsite findWithoutFail($id, $columns = ['*'])
  * @method Jobsite find($id, $columns = ['*'])

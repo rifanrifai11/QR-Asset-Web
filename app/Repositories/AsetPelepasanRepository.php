@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetPelepasanRepository
  * @package App\Repositories
- * @version November 7, 2017, 3:50 am UTC
+ * @version November 25, 2018, 11:11 am UTC
  *
  * @method AsetPelepasan findWithoutFail($id, $columns = ['*'])
  * @method AsetPelepasan find($id, $columns = ['*'])

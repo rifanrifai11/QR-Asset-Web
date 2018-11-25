@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAsetPengembalianRequest;
 use App\Http\Requests\UpdateAsetPengembalianRequest;
-use App\Models\Departemen;
 use App\Repositories\AsetPengembalianRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -44,8 +43,7 @@ class AsetPengembalianController extends AppBaseController
      */
     public function create()
     {
-        $departemen=Departemen::pluck('nama','id');
-        return view('aset_pengembalians.create',compact('departemen'));
+        return view('aset_pengembalians.create');
     }
 
     /**
@@ -63,11 +61,7 @@ class AsetPengembalianController extends AppBaseController
 
         Flash::success('Aset Pengembalian saved successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetPengembalians.index'));
-        }
+        return redirect(route('asetPengembalians.index'));
     }
 
     /**
@@ -106,8 +100,8 @@ class AsetPengembalianController extends AppBaseController
 
             return redirect(route('asetPengembalians.index'));
         }
-        $departemen=Departemen::pluck('nama','id');
-        return view('aset_pengembalians.edit',compact('departemen'))->with('asetPengembalian', $asetPengembalian);
+
+        return view('aset_pengembalians.edit')->with('asetPengembalian', $asetPengembalian);
     }
 
     /**
@@ -121,7 +115,7 @@ class AsetPengembalianController extends AppBaseController
     public function update($id, UpdateAsetPengembalianRequest $request)
     {
         $asetPengembalian = $this->asetPengembalianRepository->findWithoutFail($id);
-        $input=$request->all();
+
         if (empty($asetPengembalian)) {
             Flash::error('Aset Pengembalian not found');
 
@@ -132,11 +126,7 @@ class AsetPengembalianController extends AppBaseController
 
         Flash::success('Aset Pengembalian updated successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetPengembalians.index'));
-        }
+        return redirect(route('asetPengembalians.index'));
     }
 
     /**
@@ -146,10 +136,10 @@ class AsetPengembalianController extends AppBaseController
      *
      * @return Response
      */
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
         $asetPengembalian = $this->asetPengembalianRepository->findWithoutFail($id);
-        $input=$request->all();
+
         if (empty($asetPengembalian)) {
             Flash::error('Aset Pengembalian not found');
 
@@ -160,10 +150,6 @@ class AsetPengembalianController extends AppBaseController
 
         Flash::success('Aset Pengembalian deleted successfully.');
 
-        if(isset($input['url_callback'])){
-            return redirect(url($input['url_callback']));
-        }else {
-            return redirect(route('asetPengembalians.index'));
-        }
+        return redirect(route('asetPengembalians.index'));
     }
 }

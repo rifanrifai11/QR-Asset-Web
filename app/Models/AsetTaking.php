@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetTaking
  * @package App\Models
- * @version November 4, 2017, 9:23 am UTC
+ * @version November 25, 2018, 11:14 am UTC
  *
  * @property \App\Models\DataAset dataAset
  * @property \App\Models\KondisiAset kondisiAset
- * @property \App\User user
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
+ * @property \App\Models\User user
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
+ * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property integer users_id
@@ -62,8 +61,7 @@ class AsetTaking extends Model
      * @var array
      */
     public static $rules = [
-        'kode_data_aset'=>'required',
-        'kondisi_aset_id'=>'required'
+        
     ];
 
     /**
@@ -87,6 +85,6 @@ class AsetTaking extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\User::class,'users_id');
+        return $this->belongsTo(\App\Models\User::class);
     }
 }
