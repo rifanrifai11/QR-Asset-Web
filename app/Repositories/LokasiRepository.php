@@ -6,13 +6,13 @@ use App\Models\Lokasi;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class LokasiRepository
+ * Class lokasiRepository
  * @package App\Repositories
- * @version November 25, 2018, 11:21 am UTC
+ * @version February 18, 2018, 1:44 pm UTC
  *
- * @method Lokasi findWithoutFail($id, $columns = ['*'])
- * @method Lokasi find($id, $columns = ['*'])
- * @method Lokasi first($columns = ['*'])
+ * @method lokasi findWithoutFail($id, $columns = ['*'])
+ * @method lokasi find($id, $columns = ['*'])
+ * @method lokasi first($columns = ['*'])
 */
 class LokasiRepository extends BaseRepository
 {
@@ -29,6 +29,6 @@ class LokasiRepository extends BaseRepository
      **/
     public function model()
     {
-        return Lokasi::class;
+        return lokasi::class;
     }
 }

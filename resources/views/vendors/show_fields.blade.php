@@ -1,104 +1,78 @@
-<!-- Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('id', 'Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->id !!}</p>
-    </div>
+<!-- Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $vendor->id !!}</p>
 </div>
 
-<!-- Kode Registrasi Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('kode_registrasi', 'Kode Registrasi',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->kode_registrasi !!}</p>
-    </div>
+<!-- Registrasi Field -->
+<div class="form-group">
+    {!! Form::label('kode_registrasi', 'Kode Registrasi:') !!}
+    <p>{!! $vendor->kode_registrasi !!}</p>
 </div>
 
 <!-- Nama Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('nama', 'Nama',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->nama !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('nama', 'Nama:') !!}
+    <p>{!! $vendor->nama !!}</p>
 </div>
 
 <!-- Alamat Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('alamat', 'Alamat',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->alamat !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('alamat', 'Alamat:') !!}
+    <p>{!! $vendor->alamat !!}</p>
 </div>
 
 <!-- Kota Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('kota', 'Kota',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->kota !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('kota', 'Kota:') !!}
+    <p>{!! $vendor->kota !!}</p>
 </div>
 
 <!-- Fax Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('fax', 'Fax',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->fax !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('fax', 'Fax:') !!}
+    <p>{!! $vendor->fax !!}</p>
 </div>
 
 <!-- Email Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('email', 'Email',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->email !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('email', 'Email:') !!}
+    <p>{!! $vendor->email !!}</p>
 </div>
 
 <!-- Attn Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('attn', 'Attn',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->attn !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('attn', 'Attn:') !!}
+    <p>{!! $vendor->attn !!}</p>
 </div>
 
 <!-- Telepon Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('telepon', 'Telepon',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->telepon !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('telepon', 'Telepon:') !!}
+    <p>{!! $vendor->telepon !!}</p>
 </div>
 
 <!-- Phone Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('phone', 'Phone',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->phone !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('phone', 'Phone:') !!}
+    <p>{!! $vendor->phone !!}</p>
 </div>
 
 <!-- Created At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('created_at', 'Created At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->created_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $vendor->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('updated_at', 'Updated At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->updated_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $vendor->updated_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('deleted_at', 'Deleted At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $vendor->deleted_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $vendor->deleted_at !!}</p>
 </div>
 

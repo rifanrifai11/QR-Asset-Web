@@ -1,48 +1,36 @@
 <!-- Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('id', 'Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->id !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $lokasi->id !!}</p>
 </div>
 
 <!-- Nama Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('nama', 'Nama',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->nama !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('nama', 'Nama:') !!}
+    <p>{!! $lokasi->nama !!}</p>
 </div>
 
 <!-- Keterangan Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('keterangan', 'Keterangan',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->keterangan !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('keterangan', 'Keterangan:') !!}
+    <p>{!! $lokasi->keterangan !!}</p>
 </div>
 
 <!-- Created At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('created_at', 'Created At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->created_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $lokasi->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('updated_at', 'Updated At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->updated_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $lokasi->updated_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('deleted_at', 'Deleted At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $lokasi->deleted_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $lokasi->deleted_at !!}</p>
 </div>
 

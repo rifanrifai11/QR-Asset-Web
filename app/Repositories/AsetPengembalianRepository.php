@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetPengembalianRepository
  * @package App\Repositories
- * @version November 25, 2018, 11:13 am UTC
+ * @version November 7, 2017, 3:41 am UTC
  *
  * @method AsetPengembalian findWithoutFail($id, $columns = ['*'])
  * @method AsetPengembalian find($id, $columns = ['*'])

@@ -25,6 +25,6 @@ class UpdateLokasiRequest extends FormRequest
      */
     public function rules()
     {
-        return Lokasi::$rules;
+        return lokasi::$rules;
     }
 }

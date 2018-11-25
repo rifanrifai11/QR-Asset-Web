@@ -1,48 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content-body">
-    <section id="horizontal-form-layouts">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card overflow-hidden">
-                    <div class="card-content">
-                        <div class="media align-items-stretch">
-                            <div class="bg-warning p-2 media-middle">
-                                <i class="ft-edit font-large-2 text-white"></i>
-                            </div>
-                            <div class="media-body p-1">
-                                <h2 class="dark">Perubahan Data Aset Peminjaman</h2>
-                                <span style="margin-top: -5px">Membuat perubahan data pada Aset Peminjaman.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="content-header">
+        <h1>
+            Aset Peminjaman
+        </h1>
+   </section>
+   <div class="content">
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($asetPeminjaman, ['route' => ['asetPeminjamen.update', $asetPeminjaman->id], 'method' => 'patch']) !!}
 
-            <div class="col-md-12">
+                        @include('aset_peminjamen.fields')
 
-                @include('adminlte-templates::common.errors')
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
+@endsection
 
-                <div class="card">
-                    <div class="card-content collpase show">
-                        <div class="card-body">
+@section('css')
+    <link rel="stylesheet" href="{{asset('/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/bootstrap-timepicker.min.css')}}">
+@endsection
 
-                            {!! Form::model($asetPeminjaman, ['route' => ['asetPeminjamen.update', $asetPeminjaman->id], 'method' => 'patch','class'=>'form form-horizontal']) !!}
-
-                            <div class="form-body">
-                                <h4 class="form-section"><i class="ft-settings"></i> Aset Peminjaman</h4>
-
-                                @include('aset_peminjamen.fields')
-
-                            </div>
-
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+@section('scripts')
+    <script src="{{asset('/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('/js/bootstrap-timepicker.min.js')}}"></script>
 @endsection

@@ -1,56 +1,42 @@
-<!-- Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('id', 'Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->id !!}</p>
-    </div>
+<!-- Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $asetTaking->id !!}</p>
 </div>
 
 <!-- Created At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('created_at', 'Created At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->created_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $asetTaking->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('updated_at', 'Updated At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->updated_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $asetTaking->updated_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('deleted_at', 'Deleted At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->deleted_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $asetTaking->deleted_at !!}</p>
 </div>
 
-<!-- Users Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('users_id', 'Users Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->users_id !!}</p>
-    </div>
+<!-- Users Field -->
+<div class="form-group">
+    {!! Form::label('users_id', 'Users:') !!}
+    <p>{!! $asetTaking->user->name !!}</p>
 </div>
 
-<!-- Data Aset Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('data_aset_id', 'Data Aset Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->data_aset_id !!}</p>
-    </div>
+<!-- Data Aset Field -->
+<div class="form-group">
+    {!! Form::label('data_aset_id', 'Data Aset:') !!}
+    <p>{!! $asetTaking->dataAset->grub_asets->nama !!}</p>
 </div>
 
-<!-- Kondisi Aset Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('kondisi_aset_id', 'Kondisi Aset Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $asetTaking->kondisi_aset_id !!}</p>
-    </div>
+<!-- Kondisi Aset Field -->
+<div class="form-group">
+    {!! Form::label('kondisi_aset_id', 'Kondisi Aset:') !!}
+    <p>{!! $asetTaking->kondisi_aset_id !!}</p>
 </div>
 

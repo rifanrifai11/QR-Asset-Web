@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetHilangRepository
  * @package App\Repositories
- * @version November 25, 2018, 11:08 am UTC
+ * @version November 7, 2017, 3:51 am UTC
  *
  * @method AsetHilang findWithoutFail($id, $columns = ['*'])
  * @method AsetHilang find($id, $columns = ['*'])

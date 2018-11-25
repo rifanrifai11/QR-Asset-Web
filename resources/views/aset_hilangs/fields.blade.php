@@ -1,19 +1,18 @@
+@if(isset($_GET['url_callback']))
+    {!! Form::hidden('url_callback', $_GET['url_callback']) !!}
+@endif
+
+@if(isset($_GET['data_aset_id']))
+    {!! Form::hidden('data_aset_id', $_GET['data_aset_id']) !!}
+@endif
+
+<!-- Users Field -->
+{!! Form::hidden('users_id', Auth::id()) !!}
+
 <!-- Nomor Surat Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nomor_surat', 'Nomor Surat:') !!}
     {!! Form::number('nomor_surat', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Data Aset Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('data_aset_id', 'Data Aset Id:') !!}
-    {!! Form::number('data_aset_id', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Users Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tanggal Kejadian Field -->
@@ -89,10 +88,34 @@
 </div>
 
 <!-- Submit Field -->
-<div class="form-actions">
-    <a href="{!! route('asetHilangs.index') !!}" class="btn btn-danger">
-        <i class="fa fa-check-square-o"></i> Cancel
-    </a>
-    {!! Form::submit('Save', ['class' => 'btn btn-success mr-1']) !!}
+<div class="form-group col-sm-12">
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+
+    @if(isset($_GET['url_callback']))
+        <a href="{!! url($_GET['url_callback']) !!}" class="btn btn-default">Cancel</a>
+    @else
+    <a href="{!! route('asetHilangs.index') !!}" class="btn btn-default">Cancel</a>
+        @endif
 </div>
 
+<script type="text/javascript">
+
+    $( function() {
+        $( "#tanggal_kejadian" ).datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+    } );
+
+
+
+    $( function() {
+        $( "#waktu_kejadian" ).timepicker({
+            format: "HH:mm",
+            maxHours:24,
+            showMeridian:false,
+            /*autoclose: true,*/
+            showInputs: false
+        });
+    } );
+</script>

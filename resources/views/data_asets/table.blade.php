@@ -1,65 +1,54 @@
-<table class="table table-striped table-bordered file-export">
+<table class="table table-responsive"="dataAsets-table">
     <thead>
-    <tr class="text-center bg-grey bg-lighten-3 text-dark">
-        <th>#</th>
+        <tr>
+            <th>Nama Aset</th>
         <th>Urut</th>
         <th>Kode Data Aset</th>
-        <th>Spesifikasi</th>
-        <th>No Registrasi</th>
         <th>Tanggal Registrasi</th>
-        <th>Lokasi Id</th>
-        <th>Tipe Id</th>
-        <th>Vendor Id</th>
-        <th>Merek Id</th>
-        <th>Foto1</th>
+            <th>Lokasi</th>
+            <th>Masa Pakai (Bln)</th>
+            <th>Harga Sekarang</th>
+            <th>Kondisi</th>
+        {{--<th>Foto1</th>
         <th>Foto2</th>
         <th>Foto3</th>
-        <th>Foto4</th>
-        <th>Grub Aset Kode</th>
-        <th>Jobsite Id</th>
-        <th>Serial Number</th>
-        <th>Departemen Id</th>
-        <th>Keterangan</th>
-        <th>Nama</th>
-        <th>Action</th>
-    </tr>
+        <th>Foto4</th>--}}
+            <th colspan="3">Action</th>
+            <th>Cetak Barcode</th>
+        </tr>
     </thead>
     <tbody>
-    @php
-        $no = 1;
-    @endphp
     @foreach($dataAsets as $dataAset)
         <tr>
-            <td class="text-center ">{!! $no++ !!}</td>
+            <td>{{$dataAset->grub_asets->nama or ""}}</td>
             <td>{!! $dataAset->urut !!}</td>
             <td>{!! $dataAset->kode_data_aset !!}</td>
-            <td>{!! $dataAset->spesifikasi !!}</td>
-            <td>{!! $dataAset->no_registrasi !!}</td>
-            <td>{!! $dataAset->tanggal_registrasi !!}</td>
-            <td>{!! $dataAset->lokasi_id !!}</td>
-            <td>{!! $dataAset->tipe_id !!}</td>
-            <td>{!! $dataAset->vendor_id !!}</td>
-            <td>{!! $dataAset->merek_id !!}</td>
+            <td>{!! \Carbon\Carbon::parse($dataAset->tanggal_registrasi)->format('d-m-Y') !!}</td>
+            <td>{!! $dataAset->lokasi->nama !!}</td>
+            <td>{!! $dataAset->masa_pakai_bulan !!}</td>
+            <td>{!! number_format($dataAset->harga_sekarang_bulan) !!}</td>
+            <td>{!! $dataAset->kondisi !!}</td>
+            {{--
             <td>{!! $dataAset->foto1 !!}</td>
             <td>{!! $dataAset->foto2 !!}</td>
             <td>{!! $dataAset->foto3 !!}</td>
-            <td>{!! $dataAset->foto4 !!}</td>
-            <td>{!! $dataAset->grub_aset_kode !!}</td>
-            <td>{!! $dataAset->jobsite_id !!}</td>
-            <td>{!! $dataAset->serial_number !!}</td>
-            <td>{!! $dataAset->departemen_id !!}</td>
-            <td>{!! $dataAset->keterangan !!}</td>
-            <td>{!! $dataAset->nama !!}</td>
-            <td class="text-center ">
+            <td>{!! $dataAset->foto4 !!}</td>--}}
+            <td>
                 {!! Form::open(['route' => ['dataAsets.destroy', $dataAset->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('dataAsets.show', [$dataAset->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('dataAsets.edit', [$dataAset->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+
+                    <a href="{!! route('dataAsets.show', [$dataAset->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('dataAsets.edit', [$dataAset->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
+            </td>
+            <td>
+                <a target="_blank" href="{!! url('download_double_barcode', [$dataAset->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-print"></i></a>
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
+
+<div class="pagination-wrapper"> {!! $dataAsets->setPath('/dataAsets')->appends(Request::except('page'))->render() !!} </div>

@@ -1,10 +1,9 @@
-<table class="table table-striped table-bordered file-export">
+<table class="table table-responsive"="asetPelepasans-table">
     <thead>
-    <tr class="text-center bg-grey bg-lighten-3 text-dark">
-        <th>#</th>
-        <th>Nomor Surat</th>
-        <th>Data Aset Id</th>
-        <th>Users Id</th>
+        <tr>
+            <th>Nomor Surat</th>
+        <th>Data Aset</th>
+        <th>Users</th>
         <th>Metode Pelepasan</th>
         <th>Catatan</th>
         <th>Foto Saat Ini</th>
@@ -14,19 +13,15 @@
         <th>Jabatan Mengetahui</th>
         <th>Diajukan</th>
         <th>Jabatan Diajukan</th>
-        <th>Action</th>
-    </tr>
+           {{-- <th colspan="3">Action</th>--}}
+        </tr>
     </thead>
     <tbody>
-    @php
-        $no = 1;
-    @endphp
     @foreach($asetPelepasans as $asetPelepasan)
         <tr>
-            <td class="text-center ">{!! $no++ !!}</td>
             <td>{!! $asetPelepasan->nomor_surat !!}</td>
-            <td>{!! $asetPelepasan->data_aset_id !!}</td>
-            <td>{!! $asetPelepasan->users_id !!}</td>
+            <td>{!! $asetPelepasan->dataAset->grub_asets->nama !!}</td>
+            <td>{!! $asetPelepasan->user->name !!}</td>
             <td>{!! $asetPelepasan->metode_pelepasan !!}</td>
             <td>{!! $asetPelepasan->catatan !!}</td>
             <td>{!! $asetPelepasan->foto_saat_ini !!}</td>
@@ -36,15 +31,15 @@
             <td>{!! $asetPelepasan->jabatan_mengetahui !!}</td>
             <td>{!! $asetPelepasan->diajukan !!}</td>
             <td>{!! $asetPelepasan->jabatan_diajukan !!}</td>
-            <td class="text-center ">
+            {{--<td>
                 {!! Form::open(['route' => ['asetPelepasans.destroy', $asetPelepasan->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('asetPelepasans.show', [$asetPelepasan->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('asetPelepasans.edit', [$asetPelepasan->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('asetPelepasans.show', [$asetPelepasan->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('asetPelepasans.edit', [$asetPelepasan->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
-            </td>
+            </td>--}}
         </tr>
     @endforeach
     </tbody>

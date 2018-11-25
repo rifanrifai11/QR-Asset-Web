@@ -1,16 +1,15 @@
-<table class="table table-striped table-bordered file-export">
+<table class="table table-responsive"="asetBasts-table">
     <thead>
-    <tr class="text-center bg-grey bg-lighten-3 text-dark">
-        <th>#</th>
-        <th>Nomor Surat</th>
-        <th>Data Aset Id</th>
-        <th>Users Id</th>
+        <tr>
+            <th>Nomor Surat</th>
+        <th>Data Aset</th>
+        <th>Users</th>
         <th>Tanggal Bast</th>
         <th>Nama</th>
         <th>Nik</th>
-        <th>Departemen Id</th>
-        <th>Jobsite Id</th>
+        <th>Departemen</th>
         <th>Jabatan</th>
+        <th>Jobsite</th>
         <th>Atasan Langsung</th>
         <th>Diserahkan Oleh</th>
         <th>Jabatan Diserahkan</th>
@@ -18,27 +17,21 @@
         <th>Jabatan Cek</th>
         <th>Penerima Oleh</th>
         <th>Jabatan Penerima</th>
-        <th>Jabatan Project Manager</th>
-        <th>Nama Project Manager</th>
-        <th>Action</th>
-    </tr>
+            {{--<th colspan="3">Action</th>--}}
+        </tr>
     </thead>
     <tbody>
-    @php
-        $no = 1;
-    @endphp
     @foreach($asetBasts as $asetBast)
         <tr>
-            <td class="text-center ">{!! $no++ !!}</td>
             <td>{!! $asetBast->nomor_surat !!}</td>
-            <td>{!! $asetBast->data_aset_id !!}</td>
-            <td>{!! $asetBast->users_id !!}</td>
-            <td>{!! $asetBast->tanggal_bast !!}</td>
+            <td>{!! $asetBast->dataAset->grub_asets->nama!!}</td>
+            <td>{!! $asetBast->user->name !!}</td>
+            <td>{!! \Carbon\Carbon::parse( $asetBast->tanggal_bast)->format('d-m-Y') !!}</td>
             <td>{!! $asetBast->nama !!}</td>
             <td>{!! $asetBast->nik !!}</td>
-            <td>{!! $asetBast->departemen_id !!}</td>
-            <td>{!! $asetBast->jobsite_id !!}</td>
+            <td>{!! $asetBast->departemen->nama !!}</td>
             <td>{!! $asetBast->jabatan !!}</td>
+            <td>{!! $asetBast->jobsite->nama !!}</td>
             <td>{!! $asetBast->atasan_langsung !!}</td>
             <td>{!! $asetBast->diserahkan_oleh !!}</td>
             <td>{!! $asetBast->jabatan_diserahkan !!}</td>
@@ -46,17 +39,15 @@
             <td>{!! $asetBast->jabatan_cek !!}</td>
             <td>{!! $asetBast->penerima_oleh !!}</td>
             <td>{!! $asetBast->jabatan_penerima !!}</td>
-            <td>{!! $asetBast->jabatan_project_manager !!}</td>
-            <td>{!! $asetBast->nama_project_manager !!}</td>
-            <td class="text-center ">
+            {{--<td>
                 {!! Form::open(['route' => ['asetBasts.destroy', $asetBast->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('asetBasts.show', [$asetBast->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('asetBasts.edit', [$asetBast->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('asetBasts.show', [$asetBast->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('asetBasts.edit', [$asetBast->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
-            </td>
+            </td>--}}
         </tr>
     @endforeach
     </tbody>

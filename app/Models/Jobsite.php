@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Jobsite
  * @package App\Models
- * @version November 25, 2018, 11:20 am UTC
+ * @version November 12, 2017, 7:17 am UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection AsetBast
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
@@ -63,16 +62,13 @@ class Jobsite extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function asetBasts()
-    {
-        return $this->hasMany(\App\Models\AsetBast::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
     public function dataAsets()
     {
         return $this->hasMany(\App\Models\DataAset::class);
+    }
+
+    public function asetBasts()
+    {
+        return $this->hasMany(\App\Models\AsetBast::class);
     }
 }

@@ -1,48 +1,36 @@
-<!-- Id Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('id', 'Id',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->id !!}</p>
-    </div>
+
+<!-- Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $permission->id !!}</p>
 </div>
 
-<!-- Name Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('name', 'Name',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->name !!}</p>
-    </div>
-</div>
-
-<!-- Display Name Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('display_name', 'Display Name',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->display_name !!}</p>
-    </div>
-</div>
-
-<!-- Description Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('description', 'Description',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->description !!}</p>
-    </div>
+<!-- Nama Field -->
+<div class="form-group">
+    {!! Form::label('nama', 'Nama:') !!}
+    <p>{!! $permission->name !!}</p>
 </div>
 
 <!-- Created At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('created_at', 'Created At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->created_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('display_name', 'Display Name:') !!}
+    <p>{!! $permission->display_name !!}</p>
+</div>
+
+<div class="form-group">
+    {!! Form::label('description', 'Deskripsi:') !!}
+    <p>{!! $permission->description !!}</p>
 </div>
 
 <!-- Updated At Field -->
-<div class="form-group row mb-1">
-    {!! Form::label('updated_at', 'Updated At',['class' => 'col-md-3  label-control ']) !!}
-    <div class="col-md-9">
-        <p class="form-control">{!! $permissions->updated_at !!}</p>
-    </div>
+<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $permission->updated_at !!}</p>
+</div>
+
+<!-- Deleted At Field -->
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $permission->deleted_at !!}</p>
 </div>
 

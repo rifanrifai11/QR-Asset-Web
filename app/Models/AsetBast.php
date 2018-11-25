@@ -8,28 +8,28 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetBast
  * @package App\Models
- * @version November 25, 2018, 11:06 am UTC
+ * @version November 7, 2017, 3:50 am UTC
  *
  * @property \App\Models\Departeman departeman
- * @property \App\Models\Jobsite jobsite
  * @property \App\Models\DataAset dataAset
- * @property \App\Models\User user
+ * @property \App\User user
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetPembelian
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
- * @property string nomor_surat
+ * @property integer nomor_surat
  * @property integer data_aset_id
  * @property integer users_id
  * @property date tanggal_bast
  * @property string nama
  * @property string nik
  * @property integer departemen_id
- * @property integer jobsite_id
  * @property string jabatan
+ * @property string jobsite
  * @property string atasan_langsung
  * @property string diserahkan_oleh
  * @property string jabatan_diserahkan
@@ -37,8 +37,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string jabatan_cek
  * @property string penerima_oleh
  * @property string jabatan_penerima
- * @property string jabatan_project_manager
- * @property string nama_project_manager
  */
 class AsetBast extends Model
 {
@@ -61,8 +59,8 @@ class AsetBast extends Model
         'nama',
         'nik',
         'departemen_id',
-        'jobsite_id',
         'jabatan',
+        'jobsite_id',
         'atasan_langsung',
         'diserahkan_oleh',
         'jabatan_diserahkan',
@@ -81,15 +79,15 @@ class AsetBast extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nomor_surat' => 'string',
+        'nomor_surat' => 'integer',
         'data_aset_id' => 'integer',
         'users_id' => 'integer',
         'tanggal_bast' => 'date',
         'nama' => 'string',
         'nik' => 'string',
         'departemen_id' => 'integer',
-        'jobsite_id' => 'integer',
         'jabatan' => 'string',
+        'jobsite' => 'string',
         'atasan_langsung' => 'string',
         'diserahkan_oleh' => 'string',
         'jabatan_diserahkan' => 'string',
@@ -97,8 +95,8 @@ class AsetBast extends Model
         'jabatan_cek' => 'string',
         'penerima_oleh' => 'string',
         'jabatan_penerima' => 'string',
-        'jabatan_project_manager' => 'string',
-        'nama_project_manager' => 'string'
+        'jabatan_project_manager'=> 'string',
+        'nama_project_manager'=> 'string'
     ];
 
     /**
@@ -113,14 +111,11 @@ class AsetBast extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function departeman()
+    public function departemen()
     {
-        return $this->belongsTo(\App\Models\Departeman::class);
+        return $this->belongsTo(\App\Models\Departemen::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
     public function jobsite()
     {
         return $this->belongsTo(\App\Models\Jobsite::class);
@@ -139,6 +134,6 @@ class AsetBast extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class,'users_id');
     }
 }

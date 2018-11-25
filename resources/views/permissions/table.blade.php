@@ -1,30 +1,32 @@
-<table class="table table-striped table-bordered file-export">
+<table class="table table-responsive"="rekomendasis-table">
     <thead>
-    <tr class="text-center bg-grey bg-lighten-3 text-dark">
-        <th>#</th>
-        <th>Name</th>
-        <th>Display Name</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
+        <th>ID</th>
+        <th> Name </th>
+        <th> Display Name </th>
+        <th> Description </th>
+        <th colspan="3">Actions</th>
     </thead>
     <tbody>
-    @php
-        $no = 1;
-    @endphp
-    @foreach($permissions as $permissions)
+    @foreach($permissions as $item)
         <tr>
-            <td class="text-center ">{!! $no++ !!}</td>
-            <td>{!! $permissions->name !!}</td>
-            <td>{!! $permissions->display_name !!}</td>
-            <td>{!! $permissions->description !!}</td>
-            <td class="text-center ">
-                {!! Form::open(['route' => ['permissions.destroy', $permissions->id], 'method' => 'delete']) !!}
-                <div class='btn-group'>
-                    <a href="{!! route('permissions.show', [$permissions->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('permissions.edit', [$permissions->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                </div>
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->display_name }}</td>
+            <td>{{ $item->description }}</td>
+            <td>
+                <a href="{{ url('/permissions/' . $item->id) }}" class="btn btn-success btn-xs" title="View permission"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                <a href="{{ url('/permissions/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit permission"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                {!! Form::open([
+                    'method'=>'DELETE',
+                    'url' => ['/permissions', $item->id],
+                    'style' => 'display:inline'
+                ]) !!}
+                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete permission" />', array(
+                        'type' => 'submit',
+                        'class' => 'btn btn-danger btn-xs',
+                        'title' => 'Delete permission',
+                        'onclick'=>'return confirm("Confirm delete?")'
+                )) !!}
                 {!! Form::close() !!}
             </td>
         </tr>

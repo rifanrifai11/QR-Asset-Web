@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class AsetPembelian
  * @package App\Models
- * @version November 25, 2018, 11:11 am UTC
+ * @version November 7, 2017, 3:51 am UTC
  *
  * @property \App\Models\DataAset dataAset
- * @property \App\Models\User user
+ * @property \App\User user
+ * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
  * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
  * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
+ * @property \Illuminate\Database\Eloquent\Collection grubAset
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property integer nomor_surat
@@ -86,7 +87,8 @@ class AsetPembelian extends Model
         'check' => 'string',
         'jabatan_check' => 'string',
         'raised_by' => 'string',
-        'jabatan_raised_by' => 'string'
+        'jabatan_raised_by' => 'string',
+        'created_at'=>'date'
     ];
 
     /**
@@ -111,6 +113,6 @@ class AsetPembelian extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class,'users_id');
     }
 }

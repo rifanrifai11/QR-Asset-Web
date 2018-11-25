@@ -11,10 +11,7 @@
 </div>
 
 <!-- Submit Field -->
-<div class="form-actions">
-    <a href="{!! route('mereks.index') !!}" class="btn btn-danger">
-        <i class="fa fa-check-square-o"></i> Cancel
-    </a>
-    {!! Form::submit('Save', ['class' => 'btn btn-success mr-1']) !!}
+<div class="form-group col-sm-12">
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('mereks.index') !!}" class="btn btn-default">Cancel</a>
 </div>
-

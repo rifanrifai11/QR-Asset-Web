@@ -1,45 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="content-body">
-    <section id="horizontal-form-layouts">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card overflow-hidden">
-                    <div class="card-content">
-                        <div class="media align-items-stretch">
-                            <div class="bg-success p-2 media-middle">
-                                <i class="fa fa-pencil-square-o font-large-2 text-white"></i>
-                            </div>
-                            <div class="media-body p-1">
-                                <h2 class="success">Aset Peminjaman</h2>
-                                <span style="margin-top: -5px">Membuat data Aset Peminjaman baru.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="content-header">
+        <h1>
+            Aset Peminjaman
+        </h1>
+    </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
 
-            <div class="col-md-12">
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'asetPeminjamen.store']) !!}
 
-                @include('adminlte-templates::common.errors')
+                        @include('aset_peminjamen.fields')
 
-                <div class="card">
-                    <div class="card-content collpase show">
-                        <div class="card-body">
-                            {!! Form::open(['route' => 'asetPeminjamen.store','class'=>'form form-horizontal']) !!}
-                            <div class="form-body">
-                                <h4 class="form-section"><i class="ft-user"></i> Aset Peminjaman</h4>
-
-                            @include('aset_peminjamen.fields')
-
-                            </div>
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('/css/bootstrap-datepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/bootstrap-timepicker.min.css')}}">
+    @endsection
+
+@section('scripts')
+    <script src="{{asset('/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('/js/bootstrap-timepicker.min.js')}}"></script>
 @endsection

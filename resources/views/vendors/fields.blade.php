@@ -1,4 +1,4 @@
-<!-- Kode Registrasi Field -->
+<!-- Registrasi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kode_registrasi', 'Kode Registrasi:') !!}
     {!! Form::text('kode_registrasi', null, ['class' => 'form-control']) !!}
@@ -53,10 +53,7 @@
 </div>
 
 <!-- Submit Field -->
-<div class="form-actions">
-    <a href="{!! route('vendors.index') !!}" class="btn btn-danger">
-        <i class="fa fa-check-square-o"></i> Cancel
-    </a>
-    {!! Form::submit('Save', ['class' => 'btn btn-success mr-1']) !!}
+<div class="form-group col-sm-12">
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('vendors.index') !!}" class="btn btn-default">Cancel</a>
 </div>
-

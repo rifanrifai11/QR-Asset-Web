@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AsetTakingRepository
  * @package App\Repositories
- * @version November 25, 2018, 11:14 am UTC
+ * @version December 28, 2017, 11:05 pm UTC
  *
  * @method AsetTaking findWithoutFail($id, $columns = ['*'])
  * @method AsetTaking find($id, $columns = ['*'])

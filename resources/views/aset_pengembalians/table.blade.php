@@ -1,14 +1,13 @@
-<table class="table table-striped table-bordered file-export">
+<table class="table table-responsive"="asetPengembalians-table">
     <thead>
-    <tr class="text-center bg-grey bg-lighten-3 text-dark">
-        <th>#</th>
-        <th>Nomor Surat</th>
-        <th>Data Aset Id</th>
-        <th>Users Id</th>
+        <tr>
+            <th>Nomor Surat</th>
+        <th>Data Aset</th>
+        <th>Users</th>
         <th>Nama</th>
         <th>Nik</th>
         <th>Jabatan</th>
-        <th>Departemen Id</th>
+        <th>Departemen</th>
         <th>Lokasi</th>
         <th>Atasan Langsung</th>
         <th>Diserahkan</th>
@@ -17,19 +16,15 @@
         <th>Jabatan Cek</th>
         <th>Penerima</th>
         <th>Jabatan Penerima</th>
-        <th>Action</th>
-    </tr>
+            {{--<th colspan="3">Action</th>--}}
+        </tr>
     </thead>
     <tbody>
-    @php
-        $no = 1;
-    @endphp
     @foreach($asetPengembalians as $asetPengembalian)
         <tr>
-            <td class="text-center ">{!! $no++ !!}</td>
             <td>{!! $asetPengembalian->nomor_surat !!}</td>
-            <td>{!! $asetPengembalian->data_aset_id !!}</td>
-            <td>{!! $asetPengembalian->users_id !!}</td>
+            <td>{!! $asetPengembalian->dataAset->grub_asets->nama !!}</td>
+            <td>{!! $asetPengembalian->user->name !!}</td>
             <td>{!! $asetPengembalian->nama !!}</td>
             <td>{!! $asetPengembalian->nik !!}</td>
             <td>{!! $asetPengembalian->jabatan !!}</td>
@@ -42,15 +37,15 @@
             <td>{!! $asetPengembalian->jabatan_cek !!}</td>
             <td>{!! $asetPengembalian->penerima !!}</td>
             <td>{!! $asetPengembalian->jabatan_penerima !!}</td>
-            <td class="text-center ">
+            {{--<td>
                 {!! Form::open(['route' => ['asetPengembalians.destroy', $asetPengembalian->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('asetPengembalians.show', [$asetPengembalian->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('asetPengembalians.edit', [$asetPengembalian->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('asetPengembalians.show', [$asetPengembalian->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('asetPengembalians.edit', [$asetPengembalian->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
-            </td>
+            </td>--}}
         </tr>
     @endforeach
     </tbody>
