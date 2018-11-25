@@ -20,20 +20,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::resource('asetBasts', 'AsetBastController');
 
 Route::resource('asetHilangs', 'AsetHilangController');
