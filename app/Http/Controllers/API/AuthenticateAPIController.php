@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthenticateAPIController extends AppBaseController
