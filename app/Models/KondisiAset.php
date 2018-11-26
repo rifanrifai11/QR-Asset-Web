@@ -8,36 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class KondisiAset
  * @package App\Models
- * @version November 4, 2017, 9:18 am UTC
+ * @version November 24, 2018, 5:50 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
- * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
- * @property \Illuminate\Database\Eloquent\Collection asetPembelian
- * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection AsetTaking
- * @property \Illuminate\Database\Eloquent\Collection grubAset
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string nama
  * @property string keterangan
  */
 class KondisiAset extends Model
 {
     use SoftDeletes;
-    /**
-     * The "type" of the auto-incrementing ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
 
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
     public $table = 'kondisi_aset';
     
     const CREATED_AT = 'created_at';
@@ -48,7 +28,6 @@ class KondisiAset extends Model
 
 
     public $fillable = [
-        'id',
         'nama',
         'keterangan'
     ];
@@ -73,11 +52,5 @@ class KondisiAset extends Model
         
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function asetTakings()
-    {
-        return $this->hasMany(\App\Models\AsetTaking::class);
-    }
+    
 }

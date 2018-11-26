@@ -1,7 +1,8 @@
-<table class="table table-responsive"="vendors-table">
+<table class="table table-striped table-bordered file-export">
     <thead>
-        <tr>
-            <th>Kode Registrasi</th>
+    <tr class="text-center bg-grey bg-lighten-3 text-dark">
+        <th>#</th>
+        <th>Kode Registrasi</th>
         <th>Nama</th>
         <th>Alamat</th>
         <th>Kota</th>
@@ -10,12 +11,16 @@
         <th>Attn</th>
         <th>Telepon</th>
         <th>Phone</th>
-            <th colspan="3">Action</th>
-        </tr>
+        <th>Action</th>
+    </tr>
     </thead>
     <tbody>
+    @php
+        $no = 1;
+    @endphp
     @foreach($vendors as $vendor)
         <tr>
+            <td class="text-center ">{!! $no++ !!}</td>
             <td>{!! $vendor->kode_registrasi !!}</td>
             <td>{!! $vendor->nama !!}</td>
             <td>{!! $vendor->alamat !!}</td>
@@ -25,12 +30,12 @@
             <td>{!! $vendor->attn !!}</td>
             <td>{!! $vendor->telepon !!}</td>
             <td>{!! $vendor->phone !!}</td>
-            <td>
+            <td class="text-center ">
                 {!! Form::open(['route' => ['vendors.destroy', $vendor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('vendors.show', [$vendor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('vendors.edit', [$vendor->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('vendors.show', [$vendor->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
+                    <a href="{!! route('vendors.edit', [$vendor->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>

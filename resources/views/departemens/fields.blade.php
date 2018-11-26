@@ -1,4 +1,4 @@
-<!-- Field -->
+<!-- Kode Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kode', 'Kode:') !!}
     {!! Form::text('kode', null, ['class' => 'form-control']) !!}
@@ -16,14 +16,17 @@
     {!! Form::text('keterangan', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Parent Departemen Field -->
+<!-- Parent Departemen Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parent_departemen_id', 'Parent Departemen:') !!}
+    {!! Form::label('parent_departemen_id', 'Parent Departemen Id:') !!}
     {!! Form::number('parent_departemen_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('departemens.index') !!}" class="btn btn-default">Cancel</a>
+<div class="form-actions">
+    <a href="{!! route('departemens.index') !!}" class="btn btn-danger">
+        <i class="fa fa-check-square-o"></i> Cancel
+    </a>
+    {!! Form::submit('Save', ['class' => 'btn btn-success mr-1']) !!}
 </div>
+

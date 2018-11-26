@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class TipeRepository
  * @package App\Repositories
- * @version November 4, 2017, 9:22 am UTC
+ * @version November 24, 2018, 5:58 pm UTC
  *
  * @method Tipe findWithoutFail($id, $columns = ['*'])
  * @method Tipe find($id, $columns = ['*'])

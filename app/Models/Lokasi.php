@@ -6,18 +6,11 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class lokasi
+ * Class Lokasi
  * @package App\Models
- * @version February 18, 2018, 1:44 pm UTC
+ * @version November 24, 2018, 5:58 pm UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
- * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
- * @property \Illuminate\Database\Eloquent\Collection asetPembelian
- * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection DataAset
- * @property \Illuminate\Database\Eloquent\Collection dataAsetHasPenggunaAset
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string nama
  * @property string keterangan
  */
@@ -59,11 +52,5 @@ class Lokasi extends Model
         
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function dataAsets()
-    {
-        return $this->hasMany(\App\Models\DataAset::class);
-    }
+    
 }

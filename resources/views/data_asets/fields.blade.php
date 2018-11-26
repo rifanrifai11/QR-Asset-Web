@@ -1,5 +1,5 @@
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -43,7 +43,7 @@
         </div>
     </div>
 </div>
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -97,7 +97,7 @@
 </div>
 
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -153,7 +153,7 @@
     </div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -220,7 +220,7 @@
     </div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -349,7 +349,7 @@
     </div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     <div class="content">
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -413,8 +413,8 @@
 <div class="col-md-12">
     <!-- Submit Field -->
     <div class="form-group col-sm-12">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-        <a href="{!! route('dataAsets.index') !!}" class="btn btn-default">Cancel</a>
+        {!! Form::submit('Save', ['class' => 'btn btn-success']) !!}
+        <a href="{!! route('dataAsets.index') !!}" class="btn btn-warning">Cancel</a>
     </div>
 </div>
 

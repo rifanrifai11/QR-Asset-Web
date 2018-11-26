@@ -1,30 +1,29 @@
-<table class="table table-responsive"="asetTakings-table">
+<table class="table table-striped table-bordered file-export">
     <thead>
-        <tr>
-            <th>Nama </th>
-            <th>Kode Aset</th>
-            <th>Data Aset</th>
-            <th>Kondisi Aset</th>
-            <th>Lokasi Aset</th>
-            <th>Tanggal</th>
-            <th colspan="3">Action</th>
-        </tr>
+    <tr class="text-center bg-grey bg-lighten-3 text-dark">
+        <th>#</th>
+        <th>Users Id</th>
+        <th>Data Aset Id</th>
+        <th>Kondisi Aset Id</th>
+        <th>Action</th>
+    </tr>
     </thead>
     <tbody>
+    @php
+        $no = 1;
+    @endphp
     @foreach($asetTakings as $asetTaking)
         <tr>
-            <td>{!! $asetTaking->user->name !!}</td>
-            <td>{!! $asetTaking->dataAset->kode_data_aset !!}</td>
-            <td>{!! $asetTaking->dataAset->grub_asets->nama !!}</td>
-            <td>{!! $asetTaking->kondisiAset->nama !!}</td>
-            <td>{!! $asetTaking->dataAset->lokasi->nama !!}</td>
-            <td>{!! \Carbon\Carbon::parse($asetTaking->created_at)->format('d-m-Y') !!}</td>
-            <td>
+            <td class="text-center ">{!! $no++ !!}</td>
+            <td>{!! $asetTaking->users_id !!}</td>
+            <td>{!! $asetTaking->data_aset_id !!}</td>
+            <td>{!! $asetTaking->kondisi_aset_id !!}</td>
+            <td class="text-center ">
                 {!! Form::open(['route' => ['asetTakings.destroy', $asetTaking->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('asetTakings.show', [$asetTaking->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('asetTakings.edit', [$asetTaking->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('asetTakings.show', [$asetTaking->id]) !!}" class='btn btn-icon btn-sm btn-outline-success'><i class="fa fa-eye"></i></a>
+                    <a href="{!! route('asetTakings.edit', [$asetTaking->id]) !!}" class='btn btn-icon btn-sm btn-outline-warning'><i class="fa fa-pencil"></i></a>
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-icon btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>

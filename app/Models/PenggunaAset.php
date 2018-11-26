@@ -8,17 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class PenggunaAset
  * @package App\Models
- * @version November 4, 2017, 9:25 am UTC
+ * @version November 24, 2018, 10:53 pm UTC
  *
- * @property \App\Models\Departeman departeman
- * @property \Illuminate\Database\Eloquent\Collection asetHasPenggunaAset
  * @property \Illuminate\Database\Eloquent\Collection asetHilang
- * @property \Illuminate\Database\Eloquent\Collection asetPelepasan
- * @property \Illuminate\Database\Eloquent\Collection asetPembelian
- * @property \Illuminate\Database\Eloquent\Collection asetRusak
- * @property \Illuminate\Database\Eloquent\Collection grubAset
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property string no_bast
  * @property string nama
  * @property string nrp
@@ -78,19 +70,5 @@ class PenggunaAset extends Model
         
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function departeman()
-    {
-        return $this->belongsTo(\App\Models\Departeman::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function asets()
-    {
-        return $this->belongsToMany(\App\Models\DataAset::class, 'data_aset_has_pengguna_aset');
-    }
+    
 }
